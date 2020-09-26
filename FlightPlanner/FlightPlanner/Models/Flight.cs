@@ -16,11 +16,15 @@ namespace FlightPlanner.Models
             var other = obj as Flight;
             if (other != null && !other.IsNotValidEntry())
             {
-                return this.From.IsEqual(other.From) &&
-                       this.To.IsEqual(other.To) &&
-                       String.Equals(this.Carrier.Trim(), other.Carrier.Trim(), StringComparison.InvariantCultureIgnoreCase) &&
-                       String.Equals(this.DepartureTime.Trim(), other.DepartureTime.Trim(), StringComparison.InvariantCultureIgnoreCase) &&
-                       String.Equals(this.ArrivalTime.Trim(), other.ArrivalTime.Trim(), StringComparison.InvariantCultureIgnoreCase);
+                var fromEq = this.From.IsEqual(other.From);
+                var toEq = this.To.IsEqual(other.To);
+                var carrEq = String.Equals(this.Carrier.Trim(), other.Carrier.Trim(),
+                    StringComparison.InvariantCultureIgnoreCase);
+                var depTimeEq = String.Equals(this.DepartureTime.Trim(), other.DepartureTime.Trim(),
+                    StringComparison.InvariantCultureIgnoreCase);
+                var arrTimeEq = String.Equals(this.ArrivalTime.Trim(), other.ArrivalTime.Trim(), StringComparison.InvariantCultureIgnoreCase);
+
+                return fromEq && toEq && carrEq && depTimeEq && arrTimeEq;
             }
 
             return false;

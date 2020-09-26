@@ -36,8 +36,11 @@ namespace FlightPlanner.Controllers
             {
                 if (!flight.IsNotValidEntry())
                 {
-                    FlightStorage.Add(flight);
-                    return message.CreateResponse(HttpStatusCode.Created, flight);
+                    var addedFlight = FlightStorage.Add(flight);
+                    var fromAirport = AirportNoId.CreateFromAirportFromFlight(flight);
+                    var toAirport = AirportNoId.CreateToAirportFromFlight(flight);
+                    var correctFlight = FlightNoId.CreateFromFlightAndAirportNoId(addedFlight, fromAirport, toAirport);
+                    return message.CreateResponse(HttpStatusCode.Created, correctFlight);
                 }
 
                 return message.CreateResponse(HttpStatusCode.BadRequest);
@@ -54,8 +57,7 @@ namespace FlightPlanner.Controllers
             }
             else
             {
-                var index = FlightStorage.FindIndex(flight);
-                FlightStorage.RemoveFlightAtIndex(index);
+                FlightStorage.RemoveFlightById(id);
                 return message.CreateResponse(HttpStatusCode.OK, flight);
             }
         }

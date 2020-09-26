@@ -4,10 +4,15 @@ namespace FlightPlanner.Models
 {
     public class Airport
     {
-        public string Country;
-        public string City;
-        public string airport;
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string airport { get; set; }
+        public int Id { get; set; }
 
+        private Airport()
+        {
+
+        }
         public Airport(string country, string city, string airport)
         {
             this.Country = country;

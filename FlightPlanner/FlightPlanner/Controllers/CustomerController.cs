@@ -12,17 +12,19 @@ namespace FlightPlanner.Controllers
         [HttpGet, Route("api/airports")]
         public HttpResponseMessage airports(HttpRequestMessage message, string search)
         {
-            List<Airport> airports = new List<Airport>();
-            foreach (var flight in FlightStorage.FlightDb)
+            var airports = new List<AirportNoId>();
+            foreach (var flight in FlightStorage.GetFlightList())
             {
                 if (flight.From.IsAirportWhatLookingFor(search))
                 {
-                    airports.Add(flight.From);
+                    var fromAirport = AirportNoId.CreateFromAirportFromFlight(flight);
+                    airports.Add(fromAirport);
                 }
 
                 if (flight.To.IsAirportWhatLookingFor(search))
                 {
-                    airports.Add(flight.To);
+                    var toAirport = AirportNoId.CreateToAirportFromFlight(flight);
+                    airports.Add(toAirport);
                 }
             }
 
@@ -44,19 +46,17 @@ namespace FlightPlanner.Controllers
             }
             else
             {
-                return message.CreateResponse(HttpStatusCode.OK, flight);
+                var flightInValidFormat = FlightNoId.CreateFromFlight(flight);
+                return message.CreateResponse(HttpStatusCode.OK, flightInValidFormat);
             }
         }
 
         [HttpPost, Route("api/flights/search")]
         public HttpResponseMessage Post(HttpRequestMessage message, SearchFlightRequest request)
         {
-            var pageResult = new PageResult<Flight>();
             if (request != null && request.IsValid())
             {
-                var allFlights = FlightStorage.FindAllFlightsForCustomer(request);
-                pageResult.Items = allFlights.ToArray();
-                pageResult.TotalItems = pageResult.Items.Length;
+                var pageResult = FlightStorage.SearchFlights(request); 
                 return message.CreateResponse(HttpStatusCode.OK, pageResult);
             }
 
