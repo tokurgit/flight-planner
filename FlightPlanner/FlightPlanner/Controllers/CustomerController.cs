@@ -10,7 +10,7 @@ namespace FlightPlanner.Controllers
     public class CustomerController : ApiController
     {
         [HttpGet, Route("api/airports")]
-        public HttpResponseMessage airports(HttpRequestMessage message, string search)
+        public HttpResponseMessage Airports(HttpRequestMessage message, string search)
         {
             var airports = new List<AirportNoId>();
             foreach (var flight in FlightStorage.GetFlightList())

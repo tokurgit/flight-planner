@@ -7,12 +7,12 @@ namespace FlightPlanner.Models
 {
     public class FlightStorage
     {
-        public static List<Flight> FlightDb = new List<Flight>();
-        public static object x = new object();
+        //private static List<Flight> _flightDb = new List<Flight>();
+        public static object X = new object();
 
         public static List<Flight> GetFlightList()
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
@@ -24,19 +24,22 @@ namespace FlightPlanner.Models
 
         public static Flight GetFlightById(int id)
         {
-            using (var context = new FlightPlannerDbContext())
+            lock (X)
             {
-                var flight = context.Flights
-                    .Include(f => f.To)
-                    .Include(f => f.From)
-                    .SingleOrDefault(f => f.Id == id);
-                return flight;
+                using (var context = new FlightPlannerDbContext())
+                {
+                    var flight = context.Flights
+                        .Include(f => f.To)
+                        .Include(f => f.From)
+                        .SingleOrDefault(f => f.Id == id);
+                    return flight;
+                }
             }
         }
 
         public static int FlightCount()
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
@@ -47,7 +50,7 @@ namespace FlightPlanner.Models
 
         public static bool HasSameFlight(Flight flight)
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
@@ -59,7 +62,7 @@ namespace FlightPlanner.Models
 
         public static Flight Add(Flight flight)
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
@@ -72,7 +75,7 @@ namespace FlightPlanner.Models
 
         public static void RemoveFlightById(int id)
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
@@ -87,7 +90,7 @@ namespace FlightPlanner.Models
 
         public static void RemoveAllFlights()
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
@@ -99,7 +102,7 @@ namespace FlightPlanner.Models
 
         public static PageResult<Flight> SearchFlights(SearchFlightRequest request)
         {
-            lock (x)
+            lock (X)
             {
                 using (var context = new FlightPlannerDbContext())
                 {
