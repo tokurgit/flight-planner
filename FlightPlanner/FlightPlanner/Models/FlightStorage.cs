@@ -7,7 +7,6 @@ namespace FlightPlanner.Models
 {
     public class FlightStorage
     {
-        //private static List<Flight> _flightDb = new List<Flight>();
         public static object X = new object();
 
         public static List<Flight> GetFlightList()
