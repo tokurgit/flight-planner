@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using System.Web;
 using flight_planner_core.Models;
 using flight_planner_core.Services;
 
@@ -27,14 +24,7 @@ namespace LegitFlightPlanner.Models
                 .Distinct()
                 .ToArray();
 
-            //GetTotalItemCount(allFlights);
-
             return new PageResult() {Items = allFlights, TotalItems = allFlights.Length};
         }
-
-        //private void GetTotalItemCount(IEnumerable<Flight> allFlights)
-        //{
-        //    TotalItems = allFlights.Count();
-        //}
     }
 }

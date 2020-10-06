@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
 using flight_planner_core.Services;
 using LegitFlightPlanner.Models;
 
-//using FlightPlanner.Models;
-
 namespace LegitFlightPlanner.Controllers
 {
     [Route("api")]
     public class CustomerController : BasicApiController
     {
+        private readonly IAirportService _airportService;
+
+        public CustomerController(IAirportService airportService, IFlightService flightService, IMapper mapper) : base(flightService, mapper)
+        {
+            _airportService = airportService;
+        }
+
         [HttpGet, Route("api/airports")]
         public async Task<IHttpActionResult> Airports(string search)
         {
@@ -55,10 +57,6 @@ namespace LegitFlightPlanner.Controllers
             }
 
             return BadRequest();
-        }
-
-        public CustomerController(IFlightService flightService, IMapper mapper) : base(flightService, mapper)
-        {
         }
     }
 }

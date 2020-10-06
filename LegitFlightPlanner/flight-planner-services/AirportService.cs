@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using flight_planner_core.Models;
 using flight_planner_core.Services;
 using flight_planner_data;
+using MoreLinq;
 
 namespace flight_planner_services
 {
@@ -34,7 +31,10 @@ namespace flight_planner_services
                 }
             }
 
-            return foundAirports;
+            return foundAirports
+                .DistinctBy(f=>f.airport)
+                .DistinctBy(f=>f.City)
+                .DistinctBy(f=>f.Country);
         }
 
         public bool SearchByPhrase(Airport airport, string phrase)

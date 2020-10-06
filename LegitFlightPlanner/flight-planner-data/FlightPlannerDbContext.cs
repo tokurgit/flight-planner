@@ -10,7 +10,6 @@ namespace flight_planner_data
         {
             Database.SetInitializer<FlightPlannerDbContext>(null);
             Database.SetInitializer<FlightPlannerDbContext>(new MigrateDatabaseToLatestVersion <FlightPlannerDbContext,Configuration>());
-
         }
 
         public DbSet<Flight> Flights { get; set; }

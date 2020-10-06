@@ -53,17 +53,9 @@
   <ItemGroup>
     <Compile Include="FlightPlannerDbContext.cs" />
     <Compile Include="IFlightPlannerDbContext.cs" />
-    <Compile Include="Migrations\202010021702444_Init.cs" />
-    <Compile Include="Migrations\202010021702444_Init.designer.cs">
-      <DependentUpon>202010021702444_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010041302395_AirportCode_to_airport.cs" />
-    <Compile Include="Migrations\202010041302395_AirportCode_to_airport.designer.cs">
-      <DependentUpon>202010041302395_AirportCode_to_airport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010051528264_Added-airport-service.cs" />
-    <Compile Include="Migrations\202010051528264_Added-airport-service.designer.cs">
-      <DependentUpon>202010051528264_Added-airport-service.cs</DependentUpon>
+    <Compile Include="Migrations\202010051630542_Init.cs" />
+    <Compile Include="Migrations\202010051630542_Init.designer.cs">
+      <DependentUpon>202010051630542_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,14 +71,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010021702444_Init.resx">
-      <DependentUpon>202010021702444_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010041302395_AirportCode_to_airport.resx">
-      <DependentUpon>202010041302395_AirportCode_to_airport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010051528264_Added-airport-service.resx">
-      <DependentUpon>202010051528264_Added-airport-service.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010051630542_Init.resx">
+      <DependentUpon>202010051630542_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

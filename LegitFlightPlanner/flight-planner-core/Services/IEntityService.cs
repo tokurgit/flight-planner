@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Deployment.Internal;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using flight_planner_core.Models;
 
@@ -10,8 +7,6 @@ namespace flight_planner_core.Services
 {
     public interface IEntityService<T> where T : Entity
     {
-        //NEDRIKST MAINIT-----------------------------!!!!!!!!!!!_-----------------------
-
         IQueryable<T> Query();
         IQueryable<T> QueryById(int Id);
         IEnumerable<T> Get();

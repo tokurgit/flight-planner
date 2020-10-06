@@ -1,5 +1,6 @@
 ﻿namespace flight_planner_data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
     public partial class Init : DbMigration
@@ -13,7 +14,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         Country = c.String(),
                         City = c.String(),
-                        AirportCode = c.String(),
+                        airport = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             

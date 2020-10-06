@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http.Dependencies;
-using System.Web.Http.ExceptionHandling;
-using flight_planner_core.Services;
 using StructureMap;
 
 namespace LegitFlightPlanner.DependencyResolution

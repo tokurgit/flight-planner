@@ -7,13 +7,13 @@ namespace flight_planner_data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Addedairportservice : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Addedairportservice));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202010051528264_Added-airport-service"; }
+            get { return "202010051630542_Init"; }
         }
         
         string IMigrationMetadata.Source

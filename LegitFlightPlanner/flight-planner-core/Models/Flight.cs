@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace flight_planner_core.Models
+﻿namespace flight_planner_core.Models
 {
     public class Flight : Entity
     {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using flight_planner_core.Models;
 using flight_planner_core.Services;
@@ -45,7 +44,6 @@ namespace flight_planner_services
             {
                 throw new ArgumentException(nameof(entity));
             }
-            //could be optimized, repeating pattern 3x
 
             _ctx.Set<T>().Add(entity);
             _ctx.SaveChanges();

@@ -19,13 +19,9 @@ using AutoMapper;
 using flight_planner_core.Services;
 using flight_planner_data;
 using flight_planner_services;
-using LegitFlightPlanner.App_Start;
 using StructureMap;
 
 namespace LegitFlightPlanner.DependencyResolution {
-    using StructureMap.Configuration.DSL;
-    using StructureMap.Graph;
-	
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
 
@@ -36,7 +32,6 @@ namespace LegitFlightPlanner.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
 
             For<IFlightPlannerDbContext>().Use<FlightPlannerDbContext>().Transient();
             For<IDbService>().Use<DbService>();
